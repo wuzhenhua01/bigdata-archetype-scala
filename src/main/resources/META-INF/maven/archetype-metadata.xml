@@ -1,0 +1,81 @@
+<archetype-descriptor xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
+                      name="bigdata-archetype-scala">
+    <requiredProperties>
+        <requiredProperty key="groupId">
+            <defaultValue>cn.wuzhenhua.bigdata</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="version">
+            <defaultValue>0.1.0</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <fileSet>
+            <directory/>
+            <includes>
+                <include>.gitignore</include>
+                <include>.scalafmt.conf</include>
+                <include>mvnw</include>
+                <include>mvnw.cmd</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>.mvn/wrapper</directory>
+            <includes>
+                <include>**/*.**</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+    <modules>
+        <module id="${rootArtifactId}-common" dir="__rootArtifactId__-common" name="${rootArtifactId}-common">
+        </module>
+        <module id="${rootArtifactId}-core" dir="__rootArtifactId__-core" name="${rootArtifactId}-core">
+            <fileSets>
+                <fileSet filtered="true" packaged="true">
+                    <directory>src/main/scala</directory>
+                    <includes>
+                        <include>**/*.scala</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" packaged="true">
+                    <directory>src/test/scala</directory>
+                    <includes>
+                        <include>**/*.scala</include>
+                    </includes>
+                </fileSet>
+                <fileSet>
+                    <directory>src/test/java</directory>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </fileSet>
+                <fileSet>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.properties</include>
+                    </includes>
+                </fileSet>
+                <fileSet>
+                    <directory>src/test/resources</directory>
+                    <includes>
+                        <include>**/*.properties</include>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="${rootArtifactId}-assembly" dir="__rootArtifactId__-assembly" name="${rootArtifactId}-assembly">
+            <fileSets>
+                <fileSet filtered="true">
+                    <directory>src/main/assembly</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+    </modules>
+</archetype-descriptor>
